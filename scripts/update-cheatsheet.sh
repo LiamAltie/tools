@@ -107,6 +107,19 @@ EOF
   )"
   git push origin main
   log "commit & push 完了。Vercel 自動デプロイへ。"
+
+  # Telegram 通知（~/shared/alerts/ 経由）
+  ALERT_FILE="$HOME/shared/alerts/cheatsheet-$(date +%Y%m%d-%H%M%S).json"
+  cat > "$ALERT_FILE" <<ALERT
+{
+  "source": "cheatsheet-update",
+  "version_from": "${CURRENT_VERSION}",
+  "version_to": "${LATEST_VERSION}",
+  "status": "updated",
+  "message": "Claude Code チートシートを v${CURRENT_VERSION} → v${LATEST_VERSION} に自動更新してデプロイしたよ。"
+}
+ALERT
+  log "Telegram 通知送信。"
 else
   log "変更なし。commit スキップ。"
 fi
