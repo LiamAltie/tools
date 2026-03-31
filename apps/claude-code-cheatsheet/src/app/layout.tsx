@@ -16,14 +16,7 @@ export default function RootLayout({
     <html lang="ja" suppressHydrationWarning>
       <head>
         <link
-          rel="preload"
-          href="https://cdn.jsdelivr.net/gh/nicholasgasior/line-seed-fonts@main/fonts/LINESeedJP_OTF_Rg.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=M+PLUS+1+Code:wght@400;500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP:wght@100;300;400;700;900&family=Space+Grotesk:wght@500;700&family=M+PLUS+1+Code:wght@400;500&display=swap"
           rel="stylesheet"
         />
         <script

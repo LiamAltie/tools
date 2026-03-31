@@ -1,17 +1,6 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'LINE Seed JP';
-  font-weight: 400;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/gh/nicholasgasior/line-seed-fonts@main/fonts/LINESeedJP_OTF_Rg.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'LINE Seed JP';
-  font-weight: 700;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/gh/nicholasgasior/line-seed-fonts@main/fonts/LINESeedJP_OTF_Bd.woff2') format('woff2');
-}
+/* LINE Seed JP は Google Fonts から <link> タグで読み込み（layout.tsx） */
 
 @theme {
   --font-sans: 'LINE Seed JP', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
