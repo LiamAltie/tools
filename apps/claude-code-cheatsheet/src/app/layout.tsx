@@ -28,7 +28,7 @@ export default function RootLayout({
         />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='light')document.documentElement.setAttribute('data-light','');}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='light')document.documentElement.setAttribute('data-light','');var o=localStorage.getItem('os');if(!o)o=/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent)?'mac':'win';if(o==='win')document.documentElement.setAttribute('data-os','win');}catch(e){}})();`,
           }}
         />
       </head>
@@ -51,22 +51,22 @@ export default function RootLayout({
     }
   });
 
-  // OS toggle
-  var isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
-  var osState = isMac ? 'mac' : 'win';
-  function updateOS(os){
-    osState = os;
+  // OS toggle (CSS-driven via html[data-os])
+  var html = document.documentElement;
+  var curOS = html.getAttribute('data-os') === 'win' ? 'win' : 'mac';
+  function setOS(os){
+    curOS = os;
+    if(os === 'win') html.setAttribute('data-os','win');
+    else html.removeAttribute('data-os');
+    localStorage.setItem('os', os);
     document.querySelectorAll('.os-btn').forEach(function(b){
       b.classList.toggle('active', b.dataset.os === os);
     });
-    document.querySelectorAll('[data-key-mac]').forEach(function(el){
-      el.innerHTML = os === 'mac' ? el.dataset.keyMac : el.dataset.keyWin;
-    });
   }
   document.querySelectorAll('.os-btn').forEach(function(b){
-    b.addEventListener('click', function(){ updateOS(b.dataset.os); });
+    b.addEventListener('click', function(){ setOS(b.dataset.os); });
   });
-  updateOS(osState);
+  setOS(curOS);
 
   // Copy
   document.addEventListener('click', function(e){

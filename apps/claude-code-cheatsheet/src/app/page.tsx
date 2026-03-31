@@ -12,13 +12,14 @@ function KeyDisplay({
     });
 
   return (
-    <span
-      className="inline-flex items-center gap-1 flex-wrap"
-      data-key-mac={keys.mac.split(" ").map(k => k === "+" || k === "/" ? `<span class="mx-0.5 opacity-60">${k}</span>` : `<kbd>${k}</kbd>`).join("")}
-      data-key-win={keys.win.split(" ").map(k => k === "+" || k === "/" ? `<span class="mx-0.5 opacity-60">${k}</span>` : `<kbd>${k}</kbd>`).join("")}
-    >
-      {renderKeys(keys.mac)}
-    </span>
+    <>
+      <span className="os-mac inline-flex items-center gap-1 flex-wrap">
+        {renderKeys(keys.mac)}
+      </span>
+      <span className="os-win inline-flex items-center gap-1 flex-wrap">
+        {renderKeys(keys.win)}
+      </span>
+    </>
   );
 }
 

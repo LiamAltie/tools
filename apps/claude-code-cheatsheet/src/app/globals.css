@@ -182,6 +182,14 @@ html[data-light] body {
   background: var(--t-surface);
 }
 
+/* ── OS toggle (CSS-driven, no innerHTML swap) ── */
+/* Default: show Mac, hide Win */
+.os-win { display: none !important; }
+.os-mac { display: inline-flex !important; }
+/* When html[data-os="win"]: show Win, hide Mac */
+html[data-os="win"] .os-win { display: inline-flex !important; }
+html[data-os="win"] .os-mac { display: none !important; }
+
 /* ── Kbd tag ── */
 kbd {
   display: inline-block;
