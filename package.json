@@ -1,0 +1,9 @@
+{
+  "name": "tools",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/claude-code-cheatsheet",
+    "build": "npm run build --workspace=apps/claude-code-cheatsheet"
+  }
+}
