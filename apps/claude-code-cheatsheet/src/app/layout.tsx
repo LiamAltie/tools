@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import SentryInit from "./sentry-init";
 
@@ -28,6 +29,12 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <SentryInit />
+        <Script
+          defer
+          src="https://umami.altie.io/script.js"
+          data-website-id="4928a2d1-6260-4b32-82e2-2373a79c092d"
+          strategy="afterInteractive"
+        />
         {children}
         <script
           dangerouslySetInnerHTML={{
