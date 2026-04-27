@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import SentryInit from "./sentry-init";
 
 export const metadata: Metadata = {
   title: "Claude Code チートシート",
@@ -26,6 +27,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans">
+        <SentryInit />
         {children}
         <script
           dangerouslySetInnerHTML={{
